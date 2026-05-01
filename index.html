@@ -1324,6 +1324,101 @@ section { padding: 100px 32px; }
   }
 }
 
+/* STEP 1: ダウンロードボタン */
+.install-download-btn {
+  margin-top: 8px;
+  font-size: 14px;
+  padding: 14px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+.install-download-btn span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.install-download-btn::after {
+  content: '↓';
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 4px;
+  transition: transform .2s;
+}
+.install-download-btn:hover::after {
+  transform: translateY(2px);
+}
+
+/* STEP 1: ダウンロードカード */
+.download-card {
+  text-align: left;
+  padding: 18px;
+}
+.download-file {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--line);
+  margin-bottom: 14px;
+}
+.download-icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+.download-info {
+  flex: 1;
+  min-width: 0;
+}
+.download-name {
+  font-family: 'Manrope', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy-900);
+  margin-bottom: 4px;
+}
+.download-size {
+  font-size: 11px;
+  color: var(--ink-mute);
+}
+.download-progress {
+  height: 6px;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.download-progress-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--emerald), #4ade80);
+  border-radius: 999px;
+  animation: download-progress 2.5s ease-out infinite;
+}
+@keyframes download-progress {
+  0% { width: 0; }
+  60% { width: 100%; }
+  61% { width: 100%; opacity: 1; }
+  85% { width: 100%; opacity: 0.4; }
+  100% { width: 0; opacity: 0; }
+}
+
+/* STEP 6: 最終ステップを強調 */
+.install-step-final {
+  background: linear-gradient(135deg, rgba(0,163,122,0.12), rgba(0,163,122,0.06)) !important;
+  border-color: rgba(0,163,122,0.35) !important;
+  box-shadow: 0 8px 24px rgba(0,163,122,0.15);
+}
+.install-step-num-final {
+  background: linear-gradient(135deg, var(--emerald), var(--emerald-dark)) !important;
+  color: white !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 12px rgba(0,163,122,0.4);
+}
+
 /* ============== FAQ ============== */
 .faq {
   background: var(--bg-soft);
@@ -1590,7 +1685,7 @@ section { padding: 100px 32px; }
     </nav>
     <div class="header-cta">
       <a href="#pricing" class="btn btn-ghost">プランを見る</a>
-      <a href="#pricing" class="btn btn-primary">無料で試す</a>
+      <button class="btn btn-primary" onclick="downloadExtensionZip()">ダウンロード</button>
     </div>
   </div>
 </header>
@@ -1616,8 +1711,8 @@ section { padding: 100px 32px; }
         見積PDFをドラッグするだけ。AIが項目を自動で読み取り、リドックスのフォームへワンクリックで転記。50行の明細でも1分以内、月20件の処理で<strong>月10時間の業務削減</strong>を実現します。
       </p>
       <div class="hero-cta">
-        <a href="#pricing" class="btn btn-emerald btn-large btn-arrow">30日間無料で始める</a>
-        <a href="#how" class="btn btn-ghost btn-large">使い方を見る</a>
+        <button class="btn btn-emerald btn-large btn-arrow" onclick="downloadExtensionZip()">📦 ダウンロードして始める</button>
+        <a href="#install" class="btn btn-ghost btn-large">導入の流れを見る</a>
       </div>
       <div class="hero-trust">
         <div class="trust-item">
@@ -1905,7 +2000,7 @@ section { padding: 100px 32px; }
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 単価自動丸め</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> 社内ID共用OK</li>
         </ul>
-        <a href="#" class="price-cta">30日間無料で始める</a>
+        <a href="#install" class="price-cta">30日間無料で始める</a>
       </div>
 
       <!-- STANDARD -->
@@ -1920,7 +2015,7 @@ section { padding: 100px 32px; }
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ライトと同じすべての機能</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>処理回数 月200回</strong>に拡張</li>
         </ul>
-        <a href="#" class="price-cta">30日間無料で始める</a>
+        <a href="#install" class="price-cta">30日間無料で始める</a>
       </div>
 
       <!-- PRO -->
@@ -1935,7 +2030,7 @@ section { padding: 100px 32px; }
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> ライトと同じすべての機能</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>処理回数 月300回</strong>に拡張</li>
         </ul>
-        <a href="#" class="price-cta">30日間無料で始める</a>
+        <a href="#install" class="price-cta">30日間無料で始める</a>
       </div>
     </div>
 
@@ -1948,52 +2043,57 @@ section { padding: 100px 32px; }
   <div class="container">
     <div class="section-head">
       <span class="section-tag">QUICK START</span>
-      <h2 class="display section-title">ご契約後すぐ、5分で導入完了。</h2>
-      <p class="section-desc">Stripe決済が完了すると、確認メールから拡張機能ファイル（ZIP）をダウンロードできます。Chromeへの導入は以下の流れで簡単に行えます。</p>
+      <h2 class="display section-title">ダウンロードから利用開始まで、6ステップ。</h2>
+      <p class="section-desc">①拡張機能ファイルをダウンロード →②解凍 →③Chromeに導入 →④フォルダ読み込み →⑤ピン留め →⑥プラン購入。<br>すべて画面の指示通りに進めれば、5〜10分で利用開始できます。</p>
     </div>
 
     <div class="install-steps">
-      <!-- STEP 1 -->
+      <!-- STEP 1: ZIPダウンロード -->
       <div class="install-step">
         <div class="install-step-num">STEP 1</div>
         <div class="install-step-content">
-          <h3 class="install-step-title">プランを選んで決済（30日間無料）</h3>
-          <p class="install-step-desc">プラン購入ボタンからStripeの決済ページへ。クレジットカード情報をご登録いただくと、30日間の無料期間がスタートします。</p>
+          <h3 class="install-step-title">拡張機能ファイル（ZIP）をダウンロード</h3>
+          <p class="install-step-desc">下のボタンを押すと、見積転記アシスタントの拡張機能ファイル（約20KB）がダウンロードされます。</p>
+          <button class="btn btn-emerald btn-arrow install-download-btn" onclick="downloadExtensionZip()">
+            <span>📦 拡張機能ファイルをダウンロード</span>
+          </button>
         </div>
         <div class="install-step-visual">
-          <div class="install-mini-card stripe-card">
-            <div class="stripe-row">
-              <span class="stripe-icon">💳</span>
-              <span class="stripe-label">Card Number</span>
+          <div class="install-mini-card download-card">
+            <div class="download-file">
+              <div class="download-icon">📦</div>
+              <div class="download-info">
+                <div class="download-name">mitsumori-tenki-app.zip</div>
+                <div class="download-size">約20KB</div>
+              </div>
             </div>
-            <div class="stripe-num">•••• •••• •••• 4242</div>
-            <div class="stripe-cta">30日間無料で開始 →</div>
+            <div class="download-progress">
+              <div class="download-progress-bar"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- STEP 2 -->
+      <!-- STEP 2: ZIPを解凍 -->
       <div class="install-step">
         <div class="install-step-num">STEP 2</div>
         <div class="install-step-content">
-          <h3 class="install-step-title">確認メールから拡張機能をダウンロード</h3>
-          <p class="install-step-desc">決済完了後、ご登録メールアドレスに自動送信される確認メールから、拡張機能のZIPファイルをダウンロードしてPCの任意の場所に解凍してください。</p>
+          <h3 class="install-step-title">ZIPファイルを解凍</h3>
+          <p class="install-step-desc">ダウンロードした <code>mitsumori-tenki-app.zip</code> を任意の場所（デスクトップなど）に解凍します。中に <code>extension</code> フォルダができれば成功です。</p>
+          <div class="install-tip">
+            💡 Windowsなら右クリック →「すべて展開」、Macならダブルクリックで自動的に解凍されます。
+          </div>
         </div>
         <div class="install-step-visual">
-          <div class="install-mini-card mail-card">
-            <div class="mail-header">
-              <div class="mail-from">From: Crevias &lt;noreply@crevias-inc.com&gt;</div>
-              <div class="mail-subject">【見積転記アシスタント】ご契約ありがとうございます</div>
-            </div>
-            <div class="mail-body">
-              拡張機能ファイル（ZIP）<br>
-              <span class="mail-download">⬇ download_v1.0.zip</span>
-            </div>
+          <div class="install-mini-card folder-card">
+            <div class="folder-icon">📁</div>
+            <div class="folder-name">extension/</div>
+            <div class="folder-meta">解凍完了 ✓</div>
           </div>
         </div>
       </div>
 
-      <!-- STEP 3 -->
+      <!-- STEP 3: Chromeの拡張機能ページを開く -->
       <div class="install-step">
         <div class="install-step-num">STEP 3</div>
         <div class="install-step-content">
@@ -2010,31 +2110,28 @@ section { padding: 100px 32px; }
         </div>
       </div>
 
-      <!-- STEP 4 -->
+      <!-- STEP 4: 解凍したフォルダを読み込む -->
       <div class="install-step">
         <div class="install-step-num">STEP 4</div>
         <div class="install-step-content">
           <h3 class="install-step-title">解凍したフォルダを選択して読み込む</h3>
-          <p class="install-step-desc">「パッケージ化されていない拡張機能を読み込む」ボタンを押し、STEP 2で解凍した<strong>フォルダを選択</strong>します。これだけで拡張機能がChromeに登録されます。</p>
+          <p class="install-step-desc">「パッケージ化されていない拡張機能を読み込む」ボタンを押し、STEP 2で解凍した<strong>extensionフォルダを選択</strong>します。これだけで拡張機能がChromeに登録されます。</p>
         </div>
         <div class="install-step-visual">
           <div class="install-mini-card folder-card">
             <div class="folder-icon">📁</div>
-            <div class="folder-name">mitsumori-tenki-assistant</div>
+            <div class="folder-name">extension/</div>
             <div class="folder-meta">フォルダを選択 → 読み込み完了 ✓</div>
           </div>
         </div>
       </div>
 
-      <!-- STEP 5 -->
+      <!-- STEP 5: ツールバーにピン留め -->
       <div class="install-step">
         <div class="install-step-num">STEP 5</div>
         <div class="install-step-content">
-          <h3 class="install-step-title">ツールバーにピン留めして完了</h3>
+          <h3 class="install-step-title">ツールバーにピン留め</h3>
           <p class="install-step-desc">Chrome右上のパズル型アイコンをクリックし、「見積転記アシスタント」の<strong>📌 ピンアイコン</strong>を押してツールバーに固定します。以降はワンクリックでサイドパネルを呼び出せます。</p>
-          <div class="install-tip install-tip-success">
-            ✓ ピン留め完了後、ツールバーのアイコンをクリックすると<strong>サイドパネル</strong>が右側に表示され、すぐに使い始められます。
-          </div>
         </div>
         <div class="install-step-visual">
           <div class="install-pin-wrap">
@@ -2042,11 +2139,34 @@ section { padding: 100px 32px; }
           </div>
         </div>
       </div>
+
+      <!-- STEP 6: プラン購入 -->
+      <div class="install-step install-step-final">
+        <div class="install-step-num install-step-num-final">STEP 6</div>
+        <div class="install-step-content">
+          <h3 class="install-step-title">プランを購入してライセンス取得（30日間無料）</h3>
+          <p class="install-step-desc">サイドパネルを開き、画面上部の「プラン購入」ボタンからStripe決済へ。クレジットカード情報を登録するだけで<strong>30日間の無料利用</strong>が始まります。</p>
+          <div class="install-tip install-tip-success">
+            ✓ 決済完了後、自動的にライセンスが有効化され、すぐに見積PDFの読み取り・転記が使えるようになります。
+          </div>
+        </div>
+        <div class="install-step-visual">
+          <div class="install-mini-card stripe-card">
+            <div class="stripe-row">
+              <span class="stripe-icon">💳</span>
+              <span class="stripe-label">Card Number</span>
+            </div>
+            <div class="stripe-num">•••• •••• •••• 4242</div>
+            <div class="stripe-cta">30日間無料で開始 →</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="install-footer">
       <p>導入が分からない場合は、メールサポートでも丁寧にご案内します。</p>
-      <a href="#pricing" class="btn btn-emerald btn-large btn-arrow">30日間無料で始める</a>
+      <button class="btn btn-emerald btn-large btn-arrow" onclick="downloadExtensionZip()">📦 拡張機能ファイルをダウンロード</button>
     </div>
   </div>
 </section>
@@ -2099,9 +2219,9 @@ section { padding: 100px 32px; }
 <section class="final-cta">
   <div class="container">
     <h2 class="display">見積入力にかかる時間を、<br>本来の業務に取り戻す。</h2>
-    <p>導入初日から効果を実感できる、Chrome拡張型の見積転記アシスタント。<br><strong>今なら30日間無料</strong>でお試しいただけます。期間中はいつでもキャンセル可能です。</p>
-    <a href="#pricing" class="btn btn-emerald btn-large btn-arrow">30日間無料で始める</a>
-    <p class="final-note">クレジットカード登録のみ／31日目から月額課金開始</p>
+    <p>導入初日から効果を実感できる、Chrome拡張型の見積転記アシスタント。<br>まずは拡張機能をダウンロードしてください。<strong>プラン購入後30日間は無料</strong>でお試しいただけます。</p>
+    <button class="btn btn-emerald btn-large btn-arrow" onclick="downloadExtensionZip()">📦 拡張機能をダウンロードして始める</button>
+    <p class="final-note">ダウンロード → Chrome導入 → プラン購入の順で5〜10分で利用開始</p>
   </div>
 </section>
 
@@ -2141,5 +2261,26 @@ section { padding: 100px 32px; }
   </a>
 </div>
 
+<script>
+  // 拡張機能ZIPファイルのダウンロード
+  function downloadExtensionZip() {
+    const zipBase64 = "UEsDBBQAAAAAAJujnlwAAAAAAAAAAAAAAAAKACAAZXh0ZW5zaW9uL3V4CwABBAAAAAAEAAAAAFVUDQAH9zzzaej+8mlB/vJpUEsDBBQACAAIAI6cnlwAAAAAAAAAAAAAAAAXACAAZXh0ZW5zaW9uL2JhY2tncm91bmQuanN1eAsAAQQAAAAABAAAAABVVA0AB6ww82kGPfNprDDzadPXV3jctOhx05LHTZsfN29+3LT+cfOqx83NIEbj8sdNW0FSzZ2Pmyc+bu593Lz6cdOkl9O6Hzf2cyVnFOXnpuoVZ6akBiTmpeboFaeWgBlOqRmJZZn5RRrVCvkFqXlgMf88x+SSzPw855zM5GwrhZKi0lSFWk1rLgBQSwcIIdWkInkAAAB/AAAAUEsDBBQACAAIAJCcnlwAAAAAAAAAAAAAAAAUACAAZXh0ZW5zaW9uL2NvbnRlbnQuanN1eAsAAQQAAAAABAAAAABVVA0AB7Aw82kTSvRpsDDzadPXV3ixrPv5yt4Xuxe9WDHjcdOix03bHzftfNy0/3Hz5sfNHQplJnqGCo8apigk5+eVpOaV6GUVc+nrKzxunvq4aeXj5j2Pmxc8bp4FYjTteNy4+sWqtY8b97/Yt+dx477HTT0gsnHm44YmiPlP25c9n9D2uHG9QkF+QWkB0CyFx43rFFIrUpNLS1KDk4syC0qAIsufrpv/YiFQ81RkI7gAUEsHCD2/e8ehAAAArQAAAFBLAwQUAAgACADbnJ5cAAAAAAAAAAAAAAAAEgAgAGV4dGVuc2lvbi9pY29uLnBuZ3V4CwABBAAAAAAEAAAAAFVUDQAHPjHzaRNK9Gk+MfNplVYJONRd2/+PGWbshrGEsYw1JMJYyz72beyiMhkaa9aUh8qu7FvZsjS2LJFdkiSya0SkbMleQkjFfOPp+976rut93ut673Od//ld9/nd933Ouc/yJ0+QZwEWQ4wBBgCBAABEKQB5HjRhoK193hxrhjEw1v3V8RKgCEQGALy8A/yweloCdvYOAtDZXxZH4nzR/zLwz0Jh7Y7/4o6e+A+8fxJaF7z/RUr7hVKF/SjBKS4RFIxw+4XFjzDuF1Y7wlcCLgdQsPkR9rPCalOwCwWLu/2BcX/gi5f9jvjxFKzm5Rl48fe4AQa8t7UlpYVRKi/gD2ABPUDraP6/KD5FAKC0AwDg5N86XBYANEUBANfb3zrhAgBgjgSAxuHfut9rctnZz/lvFYRSqVxdAWCrFAAY7QGAbQQA6M7+30L8w9gE/h6bHuBDKW6AJ4CnaAwAb+AiIE1BpwAZQBZAk6cAbYAaDIFAwNSUDzU1NQ2UAQalCDM9PS0DnJmVFc4Mh7Nx8HKyIbjZ4XAuQS5uJJKfn5+NEyWM4hPm5ePnO3ICophCaaBMMBgTHwKO4PuvhdwBwGHADeAGGIQCqOAgMBxE7qJMAKACg0Ag0O+8Q6lpYBBa8FEvlgUAUUHAYAgDLS2Y8e8FoAIDEGo4DasgVFaTjcvCGYbgQJ1StLZJSSeNuvoG3swoLK77wM4ppIXFRdY/K6qdQ+taueADItKIjzrnv1B88oAAKkrIPzYaNc2RU+hRQHX4UUAQjIYGBv1F+d+AspSImhbOvs/YbqYU1r5CsHOgLs6dkpPXwlpaFVnj/FJJ8182yW8BBopnKjgYDqgD3eaaEBcXFk0kYv9YX+TLzNQ7vntmqwXnOmcdvzJiSvVTWYrLRFALPZGRt+8uJbYGqoQVbYgJiX59BhHRhQmL/qi+Ahq/JpgQXYNIz8YeOJb4ufBEk8yE83TrayRUfEfPno13FLmLs0+vler3rM/5qE2g1W9pv6GdoC6UH0A9UCHvyW2WvHGjjp0opK31Y0frgRlgO3Op6pWkhGajnlPL6dBl1Iw6LMPD9fYJ4cd2ho4Crob4bSD4hj994mMYTpMhwSVPATxtYMt61YFG+qF8JQx57krUxuLoQQMZMCIDbbrG69/bRiV8G3rbCz3QU0Txtecy4LXoNvhay3ETu0fmlh33riTBbbNNRQ/O2USaYJOsisvi9jnvApFLx1tpUbt03GzeER09kEuKZ7WrjpeaZzTWYIlljuLI2USURHMSmLTKqLQeQUjJaQpJw6QH1ByflZ/O8Wlpkx5e8KgKb7Fe8lbanQ0pSH/iJYEOOBvciRjRC3VPUdfLsWrbptNsgTkl6p3wwgYn6L0I9eJlufvBiICn5xCyiCBgbeRSvQXCYSi4uEC4yvFHPq/FJlIzTd5fdaYdmQjMucwzbB4nSOcQjpU2DtbXb0l8J6edWz0cR3BOqZ9o2+Q0IhwSv/CGSSbPFFoQvtrjuiKU5eyaG3jKXegd85elFNDcz2IIUhaEE/oylfveNnP61O6qvU0FPiOgUBRG5QVd5PvTNQ23m31VFZnczsPMy6zYTxWl51/puRoOm3yfcE/kEn8XGTi1LnvBatruu+qaW2E7AbU/xfiUwatOd4XHcHsTmNtOUhVI0pm9dbr5G//jA9yw+U/Tjdyrk5BrYhC3Jn7w3vVKt7IwsStDauvhiomv1RxwSSklhx99Iwpvxdnt3Hc/5+pNaFRcEPD8eqdInGFtJvB+Zrlp6gPDY/b7Ae29gvYGAuFK4QrQ+RWZ+91K7ribilnKeSkBh1Fr7uqBTnSHBx9imS4tlRvUmieHGeIVCQsISU3f8ZNdPkicWpUFd7m8SeVsx5Zqm5Cw2x2JqvJxQWqI/ryE0VeHukfMFWfOIpRYNRxM508uq+5AzusnJuqvGeHxDbfhBc9vcXAkE2cvRCf2l+FMc903CrVcLyEaaYUkbTlIU72c7a34xm36bJ3UVQUDAsc21Y84TazlXSLbg6oR6uFBZoINd2amu33kAoEIEVQU7aXq8GDcR5oxtZdnJNCOKOULfgBVWB6LZWQM/pJEpJxKFIeQjecU2x7PxDPBOFW9psdm6QdQyd6lYRVisA260ePzHPu0fz7VmbGfXO1B6vr6r3fhOinlBkamfS1TvPfZGEW63xBKYa1WMLQAf7zuw2Y15kVX5HfZfFfls3XyiyX5bMYZFacdNIV0v4xgvnlpW0oSHpG2MZfGWtl4l85AQiu+yfjnfoPvPpx9nv/blmn2i3rW3SvL3aF3h00LD9PJgO92/NerZGAQGdH3L8NvnTvq/cHud+wXVM83LUxmL9QtLuzrUOOfRH0KOdcp9Dii49DVeeb+sV3cNetoEXx2Rga+kQsPasz2EhTX0qjRB2sAIyDwAzlWpmKUdWpE9ULObhrPqcEBgXtZV9/bxCLLgutf8AuZHPR9gGI238bcNrbYkp95Vy0ToLhg9lq1K1jDfWNcKJJFE6KqIV7tRRUtibBWIiHKW8xLuYB7P4JcJsB+GqOVTM2m3VGRiTLFtzCCWWleEgwzqooGYFQDcD6Yu+QAo3xoP9ppFVfPEMCn8rhaJVL2lag0vZhNypBIkLVUzKZ5IF6jv6YJ7tWVI3SuQvzAfDJquodHM6hkRcsojlFEorGAd49zGc13k0FfOdULYol92GWw0SQ+UvFQ5VLCjavb4TCBaH1O7iSIc8u600SpWEx5db+CgmJ+mmNnema3wUepd0S2FrHob4XbPj181s/ba/Zao6UHa9V9n8SzcqXVh4TU75uN+LXd+2v7gV7URQ/X9s9wpyXlL0Kfzj9LvC790fmkMS0iPDHF9klt+5aCA9c74xTtUOXaQZ7Lq3DHxZlEtYqYUOeNQCj6p+9HR9U15pCy2u1f6X425D+r9/ZpBI8T2jLM7uDpR8QilgzAN7ZuLf0mKzd9SJKYm7ELea+blLvUkdRwnUY6hH+KeQnKOmDxOO9nzsveBx4Zn6Yddh3YMt9lX/feewp7gLsiXjwl3XyDVfb7GV/0RElzQWTZu82tuNUdhe/oZ27L20ZePi/nrojkWbqks6OsiMn6NG+4HWFdKW1BhfOjiL8SFPck45E8x7gfNd6z6HogWUUUuQSmPGAQ5Q4lQa/GYy6i1/LRdC16Z8+680qlwvZ/bO9oix4POecFZe5rNU+ddw3HVriDtKpPjniepgLhJTX7PB5XhsDCES8WB0WVghQPA8lABBnIlSm0eBTz1gNxvIkdf1qqHi0VaE2quMZqNsgYXCqCpC8pFPqcqroxJGaL8Xyl6vWxDyYQzjXr4unds0LLfa9TPFXh+HHCpK3qxXScM7H57Sf5OU7DmzRd4M3Yhj3ozZ8Dz59i5NY7e/6LxCdeKHd1ygo1NQnQI9rcRjbPq88xao4VlnQ6DO1h8r9hbn1mBu9nxYTFu01G/D6rcg//Xb50nlDZfovxJQPi2yTkgXrwVgL7Oz7othzTAddwHbL+L4UY8VGJ7Ptz302UdwQaS/EuUwS8cDjWUAPdTPNei10VOikt1BHc7l5rl0dsf06izzTEO/ka0UmjC/SxrCdc+E6zrN0IBI80n/Xamg9aacIP+PSHrAxZXi2RfGy+Sbh1BpPzI6Nb0DXzjoNRbNaGlbTq8GbCkwZmjrv3FwhPWxxxhoieKKn7P14+HVd/WEJPysvFZa+RHtQaRn0F+3rNzs0FO/RFKcWPoS+zhOmRAfvDnm89IloWp7L0TuQZzmWO892tEY8ML2YBXqd1Slo+zIrLUPG5WKSnEXFM0aLcSpQ2sL9Qadk09TJX4I5WW9pw29PgZV6hD4j31WQgzY8MbMSRgVpfv6juiXyCpfzkhYrWSKUG0R6dMiL4IOOawC5Whaek1fQxE0l999jx2KFsHSuZn/vF48Viz8wZmum2bhhovtI4b5SeKrg8GhtIbCWRGsepUok5UeDmiC7MX9FDg5L6ZRYWAmtxn1pk007sWF58Zl0pz8eM7Mj7UpVSN9dkK1H3tT5R5YdeJEdVf4awisIlNdQkhEVPN6rs/z2+zoETk/M2N3+abUs/51DKs/00fN2hzfi0YWgeL/To4ruE6WI5+ruz/ePkoPpvEV43R8wIv8N8/vPSDFCL17KV2rKSpv1IrzBLR2J6effBkHBv4QlJ26i9VSgZIKzEBh8IJ4OEpzTH+JMHjUqaTN2KMCSfuffO9JUymZbZApHtquUl5XGufIQhi+jKfjEjvOkWbJqujuUag5xvHgFhKFld3FXiNWIhlbNq/cOm9pVie6s3r7MkXZbbGak4nbyl5E30rPO9OOnQpSTQEGyjYExUfAfjVvy6oiB+ma7Gl3NMLCxmdeRLIkwQXspB6hzxxKRAXyfXp1eAmVt1fj7B5g78LLfAzwUscqC6u/hqNOFjtLnIOFdxtqvWWZOcZitZ7ff30kYebrwLZpkuHTZ4LRI5kP7cp/66Pc0umqanYFVepcexyCa7XF7ac7bLn6dNUOWaLrbi0PJmAtuj043OjkJ1b135yi3XTAcN/dqKPk4STHI/V+FemIJbtKO/NWwndxwadp2rHn4SXwqxOjR6eWY1z07RQnhlPKBr6sEAOjlZNzpeyMb/X7SI3Gjolg1qJyh0Ha+EeuhCmGL2NHvDpqrn4j7kx8Xfa3d7bHKvxv9Pt26P5D/FNMr9TSL8hW9aR9p3smerVaHbYpaI/JkEU5kRDewUVlNYxaQ6sEY2WyCcbrTc7+tCudS5HkIbYWCw5ZSmvxV8Ozu0nODmet4Gk63pMIbzTJY2TTZu76qTCMMvThLQA00I1hR/L4MoG5UXtytby4+xH0csIE3n93nNtK5BhwJr2K1X10fth2wyeGlmMkfZ0tIcSesy4zg5zjfI6rE7slfYpBJ3nYrh02Jxo3ENQ4dUi52CBeHKkOefjVVKHRUtSM6DjaS3WqzylDsTViIG0R+psKaT6g3TXM+q5NWKItUwruvtcKjkIHEqsNpSm77OKbSQXWwVrd2geXMMB3c3orUTO3rbOPdtQgTTSV13oK8CMGgeDTtQepEo99rola+Ia3J6k5hStQ7LVU4aFx/RDn4IT87bkQ2zfgVhiEnRj+7Td4PgnSBjCxCpt/HDEtOyoJdYfRaxXuf9iTuO7bcIpIkm3Vibxztthg317soEkUnlr80aA+nFdMAmsMiJDGLpHseOOnEjm1j0xLlaHUlh604Ct3yWuOMOb1uQgcwkb1RJUPr3LPNMYuNUK94yKYPo0QWcXEly6jP0wH2c+gLZ2kyCG2fbvotW08KpmRkVyc87XZUevDndL/BeZ+XCdRd3xmHGN1EZbhxvJGLPmplsSZ0MkWKIa6jU/YliaoKksJg/Uc/EvTgVu6YWkzUvkP6EzWTa1nw7LtckdpX9TZLnybRMw77sO2bhCSfKDy6OXzOpCtGRZ9FS3WYaUHIMtLUYv7DtVVwfWWCnCWHRlVUiT/4PUEsHCEQheZHtDwAAbhEAAFBLAwQUAAgACABWo55cAAAAAAAAAAAAAAAAFwAgAGV4dGVuc2lvbi9tYW5pZmVzdC5qc29udXgLAAEEAAAAAAQAAAAAVVQNAAd0PPNpE0r0aXQ882l9Uc9rE0EUvuevCHOUujGaFulNEMFbD94kLJPZ1+ykuzvDzGxyKAF3FzFtEUFoq3iRgj9aEQ8iIgb7xzxC99Z/wZndmK0/8LKz8733ve973+y22m0S04Rvgzb+GJTmIiGb7VtrrpDQGOyFlG8PLk6flt9PyvcvMD/B/Cvm3zA/x+IzFjNS9TZc0vM2aiwAzRSXZonXY7bu3sP8+Z37mL0rzz5idr54doT5Pj7KsDjE/BSLORavMftQPjlbHBwuHr9Z7L/C7BizH5i9vJzPMP+CxVHl4NPF3uxyvlerSVAx186EtmoPiTZC0SGQtTahzPAxPKADd1l6SobuYuhAu3PCk0BMql/NA9iiCUSkX80NhY3mj+EWdxVjpN7sdKiUXc+EoCAQTHtMxJ1rlacrPVKJETBzff3Geo95Ni0GkWeJttM21krOZhXVbs0NYJumkfE5u4JavLvh4nSoJ90av/De7X/j3Zu/Fyp8ar/TStYt7Mtq47+kJTWh40ohU+mFJo7IijegbGeoRJoEDU+DGnMG/kSoHVCO2XR5I92QrRcDifHr12hCXS0ZU8NCqJ/yv0H3V3uO6u7laCfX1FSa+NQ4Q5aaxk6aBxE0WfRb09ZPUEsHCAXkq4jPAQAADwMAAFBLAwQUAAgACAAxop5cAAAAAAAAAAAAAAAAFAAgAGV4dGVuc2lvbi9wb3B1cC5odG1sdXgLAAEEAAAAAAQAAAAAVVQNAAdPOvNpH0r0aU8682ndW+tz29aV/66/AqUnUykrUKD4EPUwp7XbZLPbZD1JOrO7X3ZA4IJERAIYALSlZjxjkrbjWHGVdd5rJ7bTruPY6ySNu626du3/JRAl+VP6J+w59+JxcQFSlKeZ6TSOJTzuPfc8fud1L7z2o5/9y8nX/+3Uz6W23+00Ztbwl9RRrdbxwhtqAR8QVYdfXeKrktZWXY/4xwu/fP0FuY5vPX+zQxozz0tvSl3VbZnWirIqOaqum1YLL5v2huyZv8K7pu3qxJXhyap0dqZp65vSmzOSdMbU/faKVFKU51bhtmtacvioXFOcDXxm2JYvG2rX7GyuSD/+R9NVYSFb+md1vSe9aPttU5NOufYrP56XXiamu2nPS55qebJHXNOI5wMXBJYpM5JNVVtvuXbP0lekY0bJqBrL+FizO7YLT0pkcbncXJ05O1Ns6y7lk5/RMS2iunLLVXWTWP5sqVzVSWse5ukVotfhQqkvl5qLcxzNM23TJ4lupNKisyGVaowd3fScjgrSGR0C6lE7ZsuSYXzXW5E0WIG4q1JLdVBNOIGxJfum3yGgeV6+CrxnD84Qs9X2V6QlRUGF0xlerymML+F421E104fllWJ9NTSk7Nu4nrMRT3aRXmxouUMMoK72fHtV8smGL1OuVyQ6bDW1iCIsslxdpTqU2yGPpWJFWKYI+rAiXlOi8IZwW011drFanY/+KkVQeqJk1HEdFw/BhwbrgU6Xl/FhrHXTotw0O7a2LvLR89QWSaSmWinHSo5RedLuuSZxpVfIGcBh17ZsD+QllJrDKMTLWbaVQkIlVDKOK9oWPzRhSVNdHd7w0oeQEmRj2qaO11Z1+wwoHM2ITDN9KfP0T1Gpz8XGbtq+b3djU50mrtHBqW1T14kVMyC3RR6OGXVDNbSYi5gQrObZHVOXjpFFUje4sIAW4YEagmQxH7mRS1aWqtXa8ur0rlILtUr5biLfWY03fdQ2Yz2yi6DOpYytTasNkcUXmK1RZnuuh9w6tsk48V2IRKZv2uAYoQNIxVLVW2XGkylIcOUzrupELK2omm+eRsjQ6YbtgkI9Te2QWfCdpbl4HOhCbXYIysZ5VyXhw7LRLcGSRI8mAcp7RBKtyALX6rhgtYwWq4sWKydapFRX2gicFVh0NmZtLs1bvR7PaLmEWCIfSnW5hlZ+Zj4o1aMyom6KCgkXFsEXIaVUrCb41pp6lZSOyCUgmDI5zp3CgUav00He+CzJ4bgkLsIBW97wJEniYV9BvhRxSiknPlY5Mk7PdWiaSfG5pJVVBNUYQ01wcWGpWmapWDFZc5mWM1YZVOvcCoKVoig01r15M00Z23Mtx7t8uBhVUuj3TIoVw9Z6HsrY8zH3CMEnrkNCt8yBJqMjY+aN0uSzlkhAq6M2SadomKSjy/Q6JwllQHN4sBaySwQr3bUdLu5iltZVr004ZxLMRL0pSeuLMbz4yiMK/xOjMITDxBLICIPbvERvipFPHm6HY8QwaoYR05FNzbbS1VWZOpughBqnhNwSrpzRbS0s4eiUMTVcxOpyRS03hSouCj2G2YEqR9XT5UhY/UyVT3MVkOtvTUNvGtl0WksZckJEykmugjF4CeuhhJ6D/QPkUkyeOdCIV0bTJOESpyWBpUwfR7Upu4tkLI+NKMBHFi9CWMWApVpmV2VYpMsWl7ywoQBLGKZFvTtspqB0wwI7jGtnZ36yTjYNV+0STwpZhpepMsG1fdUns9A7QUeClUKsla7Xyq2nRZ7zchYl8AzAi/TrNzuRVbrqRlz2L9ZS5aa8GfUT8ZON6MnZGR/TuBj9Ez/tqI4HPEVXdAb2rpLfxhxoR/7v+aa2vgkxAflTxsTwGCYI6EwaUyYHv1plqVJvZirixSxyeIRiOzW2KvRpu+ynitgyq+knVd5hYyuBNkFqtROt1YWqvkM4wu5KR/V8WWubHZ0tk66J0YTm2MyLnFSPmngzWi1lEm9caOenP988Yhalc7AsigWpxAA1Za+bPK9G8YQ5zdgaY3wZsZgT+RlwhMa3Gq0jE9fN1OUGMRaNRU6znHE1tapWOf9bLjVLzZiavS5lqSmGblRyqdVrxFA1LhrUatVyJaYGkckWqWXCfzb4J/spFUVlqdLrdSEFubxWk2JxUmcZ7UeIuBobkCI/jBNdyzWhYsWfUDZ14Rm4GgzudS1smw0X/4bJrpLKDiHLDQi6aqo9ZznzjR4EFWMTaEGSsXyM6+C/cpP4Z0jYPEckMIIKm0zw+hi8BqxsnrA3ko00TJWUBylHNYqxPE71KqkZ+iF5tx7j+Gg7TwKvjks4fpVx/XzGnyMNKFpFrZGMSyytUm7gUgiIsJ4chcRj0DCctJ3N1xg7mJlgjuy1XdNap8xM1fekmk+iVkmm+Zy4O0BNk6k3M9zl93rKYr2iLcUJErt+2/KOjq9co8XS1xLvynekKEucnZlZeF46uHN/9NV/BYN7wfBRMHxben5hpui4pga05Jw9KIxQGqnnRyid1OrqIbV8SYmxmBsuzybLu/aZrHIOQ6xAlLXliBQEEhg52nfhFuGT4ZsiASU1OuqVjtAbLZXKRglCOrfTvSRK6oH+KF5iP4i8gxoSCDfXTSgdHAfKRtXS4syXfZI2Vr5F2HaokEQ5/ur5/K2sRIywe9lv97oY4cbzFxUQqQo7J/Zral1VKvkFdI67ZRnr2r+CWVaLxEz9IEtnyqSIEavHlxNKCvJYL9XG1ktjbJS/mZLX4zzD5kVSVHH8T1ldRfrirdAzDHNjUrMQOUHuSUUcbtpEWz+Kx9dyY7y4ZsaIPQ/E8UiHaH6OJRkXpuX0fA5F5RSKymPSAA2o97b2fjcYXfp07/qN0bnfBsMvg8FOMLhLIyvoEgIOwbMku+dkZeXEiiLBWW4WgsPmw0T2ZcS4cPqQHRiGMv40Ktz4SXVDeccp44v/EMzC+VkIt4ylptrMyVorOuLL3S2IrJ67BzQzRl8r1OhEl/6BU0tulMirFUTXyFmFUo2qgsx5JDHKUBdMy9w4MsnqCMNg8Dkm9cHtYPggGF7a/+rW/rsX4zT//aNLe9fP7e5sPR3e+f4Ry/qqpgElPy/r/zVOnlInocKpo5JTmlJXoOjL1ENx5Mvm9bWF8Ih6bSE8ycaOtzEzs6abpyUNMr13vNDW3UID1LdG63s64XghQSduNxYaf7nx3hZQgxF0KEzH3+yKI8S29AqNg9tb+19eOXj4+cGdj6nu/xgM/hQMnjD1ry2Mne/1moXGqZ+9cHD3ftB/Mtr+MBhclr67eFUKhl/j5AH8vBsMh3jR/4ItEJNLLgSq9DSzIJk6vX2V3YWSRopGZypkmcKT2HjmKbxpfHfugzES0OPSePQv6R0OlxYkflJ4Ef6aWfuRLEs0Mv42GDykUv7p4O6VgzuP9t9/+PTTzyVZbqQsRo9U7ZAtvPlpz28XRMERuTkChSeZaNL3/zN/2VmI16NrnwX9r8AGc2NkDU8WwxXgnZPFDg1sLB5EDSnf7WCzky4wSxRsIUVJCvrvHzx4NLrw33ufDII+eOst6rD3wPRB//LTc31AR9D/KOjfSF4B2oZvB8P/QcD17wjyBYP7OGxwFSgD2dHla0F/O+jfDPofBP3zwbnBWtPll38PdLA3vDC6+bug/zW7DYYfUqK3g8EfRhcvAFu7Tz4d3f8YSQzeCfqPg/4nQCjSyoITK4gF01B93GlDoZHL/doCfRtPZ7ksnI5nQdEJSEHyNx3QO+mqZoeBgl6+ZDkFCfCrkbbdgVAFjzdU6PzJT3Qb3ltFze7GbiDYQaF2mIbzHP0exnnEMGMe+e2YEMU8kuX4X+E/Of2D4wvhiNNVwP/LXksUBsMpk4TDMExr9kBIK2IIj8Hjo+Ho2JGxBXfUtXLo1pAscxeKwNtPP9wafbGFsWptgS0wrWeEe8dc/g9DekaMGJlrqtR2iQFhxvcdb2VhQXPJaVP1ZNPSmFl9mIsfK/1HE2LWeixBuCTbFETzfYQWRNtdZZ6G6B1AqFcbIoIPCV+3EAfDB7nBKolULwPumAHpNLHfxslC/OW677zwnDSuSSSiiUwYEOL1LzeufiPtf/vR6NKX+79+K8loHE4ZNmn7VBCpsA6LicOs81r4BBrG44VSAXf44beiFKTTKgAKrquF3AWgx2jiRGEFeMyTfwVvp6KdJzRrRQqN53hBx8TzXE2mHD/VE/Bg5MWiL6EKYkLQiulkG/AXlm3JLCi3FvduQQS/Orr0FsTx3R0I5RCXb+/uQIMAz7dmdx9vQTk0v1iu0BKgNF9WlLkYllyMOYpIE8GxfVPsWASIcNTT3Quvj7xBtITlBmXghq8lS+2SZNJLlhnGx+hJYnolR6WxwQzb5ec0Dr7d2d15ePDtzb2tC7NMQEl5bk6I0yk9/sCCpFAM14cJQceMzt3IiIGnMYcIwqNDiGFHLJlSGAojKtcZRGctLMiyNiHdJeA+Cmui6ScyUR2E11Edyh9I881+mBPE8j98zGUWbB/4jnAJVVdK45jV51BnYymENceQZoL7LAxP8qlM2RflYKwoMAcLuZabigf4DAV49e9JvZ03kH5QQPuO8xNQmXxGQLsGWti9R/+/R+uo+6FkUCliYXYDq7hUC0Ezd39n7/Jnh60SdSbB8OGpV16En/906sXR149HT67PRoXPbyD/Qck+Gm4Hg8Fo++u5PJooP36KcAK/RBC1lbrh3QpnFOK5L0HtDw0qcSDBFx3dmDe7kFsXHKsVXr3hkNakDifkRRhAMScCjLaVxNLzwDihQBlfY4WZAfrREz7IEX2ihv3IFemnL2FblzR/W5li6mjOzKpLW9VP0rvper74O4pCHozx7QSUR58bFBooyzvM0/au7WCF9cVv9j57d3fnfrFYnDwfwUZZx7vXEHnBENoLVmPdQ1JURQePoZd5j3ZD51nn8SzqcYnX6/hHUdDfQUBcFAIit9+w/7/v7n12HZS8//n/QYUPrr7/xztPr13ME3bCMhVFESp8/ttxlLDQmH1dbYL5RtsP9r94ONr6AALVz5F9eAb1EXs2N0XxFn1ikliEfjDC+aPPNoAkKXni8rd0SCRVYpFC49jagt8eOzI5J1mmAeDpzQv7174avXtlyllLdNZo8MnBueHEKWx4mbK098E3T9/anmY47dJGVz7e/fNkhtjwGt19GP36xu7jW7Ojixfnpp8DS0w/p8KaR1rAPDfF+MWwh00PhHvOgvg2ZeE19nULOjig4wRcUxJsAzCek6BkDLLCs/swGvW6J+C6IY4N34Un49n3HErDc94EqPmJgn6WzL7jTVpxXX8VK/nvH21JB7feOXjy59Hlm5n8MD29V4lHfLoPdl7au34OSv6gvxUM3g4G5zEKXPs9jac8+alDKiTpzg8SUMNPxP8GA2o5HVBpvvqS1pM3g/4O26l9psISdZlTWE633ZjdXhR3ILmihe0Iji5c4pmfXWs2VMcpFcG/XKLbmocbLICLxhykCNwvfPrhFs2/N/Yv/2Hvwham4+H1cLN7cHXvcrhBJOw05mwQjoMu/lOBzMbUC6CWQuO769vf72wL2r538NZdSBzRBucnmTIqD8d0FyfvmEQ8Hcnu0fBnJRG482Vh37jHMpyyXV9luzIPpHgvKjydGT6Eemn/9+cF1qf371/YLbuXbPRHRy7xB1cccGgQx3Zh8A3VwW16SpGsK255eZprOr7kuRrQtZ2eU3zDQ4Cy5ziQxdm1BfYvC/8fUEsHCF15nze3EAAAajgAAFBLAwQUAAgACABTo55cAAAAAAAAAAAAAAAAEgAgAGV4dGVuc2lvbi9wb3B1cC5qc3V4CwABBAAAAAAEAAAAAFVUDQAHbjzzaR9K9GluPPNpzTz9c9vGsb/rr0CUD5A1RUmpk9aUKY1sy6kaW/ZIzvTNUzURSIISbBBgAVC2InPGourvOklTu0mcNLGTNLaTZ+erH0qtxDOv/0kgSvJPfn/C290DDncARElpWieTsYjD3t7e7t7e7t4eenuVjY8vr9+5snH/g43bb/mtD/zW3/3W137rgb/0lb90QZnbnX9e+e7MVaVu1xv1/HG3q7dX8Zde95eW/NZnfus2wV1c/+vv1q9+4S/eGh7duPXh2nuvP1q57C/d8Vsf+a37CNL6euOTKxu3V6B99ZsH61dvt995b+3a5+v3bq6/fg4a1798s33hzvqr5/3WpyEBN6B949PLa1+02hf+tPbu++0zH23cvtu+d72rq2xbrqfsG97/4sjYgZdfGj+kFBV11vPqbqG3t+7Yx/Wy1/Nc33O7y/k53SnrZl6r19WBoN/EyyOHh0cPKfAfdNNd7+W53S/rNc0wBZBDo/tHxiZGRBDTKOuWqwtARw8NjykynrqpWRKaw6PHZAjTqBmeALL/yEtjMZCy3bBEkNFjI4cnZBDD02uuAHJ4ePyF0TEJpKY5MwYQA40gNc7iRysX/KX3/KUVv7UMsoGWpx+tXOSIxoGcA/JYDpBTITyIaHV52W8tHhnrPXLwIO+178j4+JFfjYwLvUq249gndQc6Qq+YJIGIPsV2lP6+Phy8y9Q9xdXNg4apAwqrYZoD1EbTJGImp1hLw9WdERQWI1GNWg8x+cRaj4JAlBRYEAK19kWN+5HtYiPj4NEya+x/LmSBv3TeX7rmt+74S5/CMul/7mkCJz4dsQKN8JyGPpAGHjKQ+oRcGrWAHhw4fQjg0oWNL5dXl+9vfHlj7fJZYhqAfXf1DPtfwWWzBJL9HybZ6M1j+b+r2rDKnmFbiuvZjj6hzemZE/p8TpnTzKyy0KUAe+aVBcW0y5o5ASDajJ53dW8U5M0Avfm6blcRXikWQXiu5xjWjKoMUVNB+eXEkbE8azSq8xnEmx1QmkpZ88qzGT270OSDlGcduwbog2FoTBwss6BMwlhTBULZjHdvxibxAvQg0solYQpdKDC2DOZAgNKEZqIJZQcI0KgqmTnliSLT8SwSV8rMwciO7jUcCygAsLRJsGHSJgKDZGgaOSXjZJXiIKJ0qEU5fZqNQ6NHaNmw9AZHjE90XK/ZTF6bisohkGhyO2C8E2FPMDym0kvXmTK3L5xfe+fBj0elZ+2TR2FCGaPCGFSxy42abnn53zR0Z35CN2H/sZ1h08yo+ToAqtl81XZGNJhoHQVUz5dNzXUPGa4XskO1LZWJiSMDwY6YOv7cNz9awcGEblqlwvoMiOKbsZGu4YY3m0Ehc0LVetAM8JsOoM5WnHFjZtYDcl1v3tTzFcOF/WwebadlW7DzKYmxDmuGlTIWNn/vsUqgKCdgsEa9onn6L3StojsZ0tRodPmdLIWUsXAXgKE8/ZS337Y8eAUD8e0Blon63Zlraif2I5aXXCZMGc30Uwt892gqvQp7pB2mOT2Q0OqNv/69ffna2tutx6zPkm7zWYNejczBD1Qy3QLeqgeOHA7mesgGbldUsDNkZjryvORZTN9SMJbBkzoBaCo2gnRUesRzyJ6xG94WmBjQlriO2o6nmR1x2XU9AOuMzQHd2+dZW9A1DlBbUjVcqYzbJzti0ghkS0zjOuxrHRE5CDFsbjE5QAW+WGdGVWwEATxd4QbomgYsR1gSm+JlHtUEwalEAutpNWrMa9qi51ijJnYjj6tjN4LYP3tCZXQyClMmZVh10DFRtRUkKg+eQQNdyqAjPbKtPHIOi8qu5OvI7wmd85wyQe5KhvfMBl6Bo1dBLLNHHfBg3QzbrOlfpGB7tKIvif7HLk505HAY7pg2Bl4G2rk5Za/SnyXQftElGURXPGjv6wumIEwK2ueS8577AedKkkpTt1nNAqsrTzd0tYtBt/KsXj6hV5LkUDiT4/BDitqvgveo9qmd6em8q5MEJi2tphe7RQ++e0rY6h2B3I7z0oWJKfGIYJee94CHuidKVZ5jGHxxposoQr43xamx1VN5pdPKqTh2/b9x12eW4pUOloBJZlNMVYjqRtFQEnwmuznCCviJ4A05ZF0OwMMReOgMburABA5/CJ86dbDrAaxd72wBOdFbS85GW6kzBclwcSECd7JvKhtYnjCEiJYILkku+DAyCAODQM6BeURFmAtlj6BPsEVtZZVnnoHXg7Bs2a+9RbaSQwTygrUGeHNsdQtvRLvHm5td4b9Mk4T5BGtsO9OJ1i28pbgOliOZJXzoj35i9Bw9qfgYrlhFXvOhDTgSkJpKYrRE/hWmW0RMH4VVjGCZ07GlK7A02K60imF3WHMcKdqpEBk8ksUKn/siPjCqCGuWIReYQvmHVOHJrKFkWMwKCa+DRBgAmJKZwpF1VDlT5ECUnSkq+oDUHKVnzOgFxIkUreg5xcwRydkYzdxsEeWyJ005xR+RGy1Ficy7DWITJn894MymRocARq06mB1agHmw57WM4PAEOcgX9flOaAKoNERdgflgpIAiPxGhDAUJDuJhdyajakA//ABDp/pLNzEUX/oUk8RLFzHN1PraX7wdy/L6rbsUsb/RPvvn9qV3/MU3/cWP/cXX/MUb/uI1f/G3iEt3nGjzpaxHF5M2VwakLSfMNadUNdPVKdbt0tx5q6xwNnfo5IIFtjxRAODWduIbD1qQInjAoFQrmdJywmY5/lOZHq4u383n8xRDEofD0VO4KXWAZ8Oq2oGDGs8pgW8CQ2gnNbAoVR1TJRBuCpnvZq9WN3oR93SOr8Oa7s3aFbAZR49MHFNzQessBctuAYJ1NaC+59h8XVcBUKvXgXMacrT3uGtbqtIMu5Xsynwi3bagJPgNi1RYsdzH0DyNTwAmk0fsgSIGjMJW+wTpIkKjwoaJlXRtJCgIvwAThe6Mnf7ip+2Pvli79iZp3bf07/sxfUtIlfRKfJcqWqbHD/94uX3rsvLduTdUvhFx/UUN7pItIMYlxKUB/kKwgZxv0dsoVU0zrIepCVVEEOatCaQGlM6a8+xMAWH7ItAomy2B0tlCAJrwloO9gKjOJp1pvhcINiMJhaciOT6hVDSHR49xZ5VPK5sCSocjEihNKxsq0Obi3Kkwt22TZanuwAbHpE7dxSSaKA+299K5D+y8LjCjkth9g9Zo841sB/uPrcC65rjMgrGMOnWL59RpeRNkiLbAAAcEfDjosONo83nDpb8Zhpt8UPYzDzZvxpuFcFJyjKg3HeUUQ8CaVs+glzSoZGQ4RQGraHi5WGPo/hQAUT58UIaGJKdL6tPMZgeSFPDwjA0eH5v51l7+5ToGhCMV6APzgwZ6BvLLmlmmYBEQxPA3Y8+OboHBPYbKmYm9wmwpppDchunt15yKmvoeQggz+bbJf8eS7tHLwMsL3oOj5jgdNveHZ66vPrhJp7l3YPuG7UDZpUCXfE13MeMp29AfaslRvl/wllgGL/CXxHOIwCxFLj1vD+xRyhu0QakdwPKktJOZSWmnBUjtomMrW3JuuYuBpY7sdFEwxEVmm8NVgMeZSuLIc2dmSO2csE61QFv0waB1n1ahLLdhQbT7i2OHD/FusxAxJrWWtcq6Woaw3JH0jJrF84lkZtxfepM08CtWF+Av3d+49eH6X377H/Xw4/5llA4OVJMsRKQO6LYIChEuM83UHS8DfvNdv/U5usjgHy/+rv3g7MbHi/7iLX/x7TQf+Hs7gOUGKG5Nd3rqROrj8AUL0RoRHYSCtFx+KB+x4QhhJ+M1tYOdsh1ymhLKFJwlQnAChshf/D35iO/4rT+QONBZ9M+0fm392vKXzrHD9PU3Pm9/sOQv3otHOdjhM/RJ6vrDm7fa9z5YWzrbvvEFCNhf/ASiHMTVWvTPLDIYXh6z8dUKBEbBYCk4L23c+ZjeRgET0CTkPZLuZnDE6mklN18Gn9jTQR7AnYIS8ikMoVP2gkBJt7L/WW6uY8v1mt+6Sbr96cPF5bVL7z22UFzcR8K0YSZYizps3Tom8A7oVQ0MV6Zz3i9KeyZOW+fYmUUzPholHbc6hEzFyw9/01Hb9R9yEvHBlHjiEjXmmKNZblV3ovTlgLRPS12qgkWE35F6snWtmSY4ZugkTEpGpV6pqjnVqIFq9dbB/wx/H6/r4sOMOsWD6QAV7Ells1HR3Uw1j+5sNu7VgPWxyKtRjx44qNASfx/WqrJ+9X576TVRYx+tXDg69kLvL4++8GjlIhoF0uC0jMXmCYto+67Km15IxtYp5pTNlgaa3lsx5hQSXrEbAXtKCNk9+H/v/+FV5amFah5PH5owi6cWDmvebJ5yoMAW13hF7+3ve3Z3tvniPpja3l5ANDi9zaPMpGMXX/XDoxuf3PUXH7Rf+6PfuvS4azJimzU7b93uRp2iNalVi/GNO9QIqWiH5XyYQmyGO9K+7SicgL4rjAhMW6vEPa+d+WPbU81UjWApML683UaJPFlVLOmEia1/8A/gW5jdik+bac/GtyvhzvtbWqVvM+DhUWD2wxtn19+5R7BXNu6+xTEB+ofnYRHff3j+9w9vXgGAtUvftM//QxjqPG3yD/DVtb+0v/kgZK8wCBkVqjc0QqeczcczanR4jWVo4BE54DJnxDPHTZnl1g1rolFKFIYggyZdY9cu5Wn6HQTHREAzp/T/vK8vPekHajq+LbcPAHsCV+vH4vK9fGJbPh8AHBDdPjblpOcXtLue5jVcylrsfnZP5PqJ8VWAMpnp4gFZ6EfFCouCVg9cqZOKpZ9URtCLzEyv3r+09u4F8P+wcPbq7dXlSw/ffp0sbnwoyr81YQXgXrII3tBVMQkJPhz3RkEzKYW+hC0QGbB6zaWLSTsAvabDs9vIEQ74EfjCIR1uo1wGXy3iS3wuIWDkH7M5rd2+A3OCKbJFm55DzUoe55Ysj2crk2BmJIxtJvvioFukEOMCFhQP91JJ8zx7n+bqz+/OhMZbAt9m/t3SzPlX/sNrkKeBEmuRv9kkDIsAQm4U+C/5HRJXCP0ccrnk92PghETv0SUJ81DRoo9HcfFzVj0l9suzxFYmWxzMLAiJvLhe65FG68KRwPTw0VEez9CKdbgRAZ/p4rSs0luEoUR/kLehqIo9wDiYxYmmJ+dGCYhqbp5giUdm/bOJOah8v2PbGe2KV5Lhqcp5GdDC0KYkUqUEapQ4TWRKOWM7ZUa/T0aUi11cs0E2O6bGjE3cvU5kTDfLlCYzpF1CQjSZ74z8MNF/7ZD0jNz+Jqg6LHCTb9LoTHEXgdyGgCjmeslO2vf0u9Mi7vaVt1a/vblx+8L6vTdBq4UrHX+KXenwF2+zawbsygyo/HY96s5XRQDRo5Xr7Q+/BDpws/gMvSq/FVzgwa3y4pft1y8gFgYEE2q/+j7++OfflUy/0hNh78XqiSiylNSIO/AJxWNOcaR/Q0OiD1e2Xdxwxhq1Elh+AMKGLD8ZQ4wMBOs4ODJ6J04cKHsawkbG6dXlK+3XPkNetGCnvvvw7Y+I/Rcp13MPlueePU/D4mXuAZ6JE0fa9y62z95ev/tHTlsNCKNQrWZYUV1cTtmzR6xo1E7ikkIaexm/avCjnzzFoNyDFbuE+h1MgRCXdcPMIAbWQ/lJWMvXVHRQqpQeLGqELlGOhwskVhkXxVTc/Il2TWYpT3WnGpWdm5SmwCIPt8NOx/heydwHICpnGfUIGUYPKTV9niPU7gGXT+YUo3JKOnVj45NLQ5ObBIApuSrLY3xJVdoBCQ0BjFp1ql86KRMUVhjibtNTNXSzUuwmeCwwFAcMkWQ5Op7pD9kZWWTmSDLfaKIR1JXswELLyiFYaqYaPwpxM+mKRxfRLgnYcwYJdJro2us5tJ/3gBiL3U8tGM3uwYC3e72KQvcSit1l27SdwpN7dms/Lf18oApeWw/mWAr9ffVTAxjw9WimMWMVwLOCHaF7EPDs6m/u7fUqArLBvSTQMKHjGd2KKFt0nLoJlqSHxOhuGe0XvskCXTvEZ3ub4YM3p0+r6nZwQkTcc8rtpoNjeIapdisEUrMr0GCBOEBo8si/aWiWZ3jz3dHIBlbQstahof4djCvibWB1bWI22Aqzaa+8tu0JubWdTQhNcYyVwbYyNNT3bxqTLXVpTGmJNLtD5Sxp5RMzZMQLT1ar1ZJeGgAvD1ZmT6C21XLlp7sr/x5Zh/6kLOuwdWhI9Dd/CJJLDc9DR4HRXNHNnpJndceXMI9PmP8ZHxMvMgUDst/hqD//Wf/P+gfKDceFx7pt4GoWl/tzsNzrWqUCVrHwbP2Usrt+qnvwn2/u7WVkCeTCLwd/TWfzxwFPRg1ruzbZeVg9f7T5GFZdMJ5g0jtcAdBTNigML4oKL0Qum7arux7b4eQ9CLiGRa64/yAXwVfOQ5MMQ8IW8YWQ9IJvRnw/nKT2KSzxDbpiqUloAajaV2jHhRRvI/WPN/LrxFllKF4UrxSU9Cp53HkSiDE7G5Er7Ur82q64SfKCixg2PqVsfE9NAaZ5iiUxkSeVJEMunRGA0jbM8KVUI/IDuRjbcjNk6qKuUZ1KCnukOpXNtPyEPl+xT1pJPafi4zy8pqu06giuVTXuZqWfmSUVG8dO1WlxNSFQh4VkgcEcJ0BkND4FLsqEUTLBYohaEcCKQo6QMGkFIFtLDINWNo9diipLLhyKxLYQIgcjU27gPRfe4LKzPEHP45XXHUxXPrDCgvWiGttQVFgS1OHeiCxVwAWTzuxKWBr0wweSRElqJRUTMUSG6Ji6mF2D9ZLrZ7eN4pmG7+kHs3t5kgtcb7izmQV03AqqmkOHC/+G1qLQn0OvpUBOSw7NQqEvRysH/vJcjbR1phPMtdMVneOkiJ4M/GMl1FoWRJ6MElL4MCm09PRPpWqemh3i6tOVvIxLghCKrXFuI6cU7oI7eqUBEsi4OXBhioPurkwsTD99ui/7E6ExZBm9yPUJs2a28tS2UBPs6dOSA7WDoZCyUaushME7i5jDuUGEne+PE4bgEnRIbhLargblvLxjTzhikJNo33v/4fV3MEMvZGW2TMDg9yH4MXzZa2jmYeEWEB9sUMGrJpmAjt7oxU9YAqEg5lZEPBMenpTFMOc9+6BxSq9kns1Kx4S1mubMHwNzg5el2RdnKPX2xuo3765deF06KqGEir94NTyPuPTw5lt0fMdg3qYandXlS6v3P3y0cv2phZBiGPsQfl5AD44Ess32uXO/tljuiSADtm4CyPgXoERudIQjKQBojCXNRytnp2nq+MWTO1+t/+Vzv/VXSqF9whLRz+IHbjDheIMOfz6hg6CLTFqbny82avs0J7VIwK1r4HnSv6v3/7Z27fPC3l7WVsJAVMjPNOE9+KqDwXtmcsX+fGYZljPMSqh4vqr5dEcsTDSZ9duvbny7IqL43z93ElZHnEyIm+DcVKzbmGyEKhbs9z235/nn93QHRKerwzaZCet3ffnb7JZDJZVJZPS0fCM1RUNwje2zT6VqCfhB4OoXu4WliAMKjzAbAAonEgRa2AU28P12fX6CgUJ8aHhIvN/6yl+6CjpNBSmXFf7Mw6EtKJbxdrxnLl3J1uaMGQ22JLxLWi/ZmlPJn3RAz3ESGWFC2bw3q1vS+f32LwFJlIUeVUp183fvno1mvrZ8gd8LAaflmFHTsZ45oCCtu8w5/LpGTnm2L0j1Slff0irv7tDB8Q327a7HV3mXqMDBjwKEfgCvOsFzmqDqhG8Mk55WmuIHbmIhIzkfmQXcX4w5vYAhWU6ByBx8IO9XhgUxAbUFHKJICvoNYbXjUFQipoIGgGNgl11wL2pqolYspCmnfnf9xqPl1xStXu/PS50UKv6MVY5ieef6pb+tnYXft9YureykZmxnjmZXsjRkkp2EJfjmlh2j7gGCvH5KLzfAG6MGfiTIPGo8eAZOjVYK+Af86uiMGSVIp8AmlmgftJ1a+AZ6ugVlkqiaEjSTu6AY9RBVQ3n2d4CnfZ0h6cA3wXplGtfQUwuwnunzKbBJybcHA7/g0cpi+9zZ9r2vsX4i8g7kaomcotoneLWCeOSRNnIodTYYK3tgp4BINcjv9Gl1dfnK2luvqln5BoT8jabNtIoPED9jTLtWIZ+8iFIIz5FxFCH7DktjQvcyupljybesmGvXTTkW5t6mh7ePdRNW2Qye3BeLRfXYyH8dGx4fGcZbQLhpoPEcBvyBTcxTL8wKgjOI70cxEki8FMcBTnhUSHWkhB/iQwN75KR11LHruuPNH9CZqkJUQb2BCzQBDC6g50DITEAxlIcN1xTmyF4C/fixIGQ/7RgZOkqnXzwvpiyUGiUIlVwyFPycu1NXfqt/511LZgM/WZA+Ki366KtJuncQ43U3Q5l9+UhuMp/Pb/OrE6hJ+Avj/skpjPyn+GCBu17Bs+XAB0jHGqIM0rcbN3+38eCb9qUbiE45fZp6bkET2+1h9HwVDHOmhJtdibkgqEmiOebo1ay4DQR2fZwFshF/VHqNagreAfNho1jE0ilZJx1A9oioBiSusyjdndBhAhDn4Vl+xsGyGQssZg7TaSamiMVFxF/jFxX66JNpAVQmVvnJ4Bm7swHbw09dcHWW3YGO9MBE+gWacsruwCUg4aZ1JW6wWI5+Qtgmu01Jf0TOXgGTGdepcTMpyCkvrYYWm3dLdhomgHg3igGiwZLdjrIkbSxRDYLuSCF+ii7eCUODjp32U1I23qmGqh72S+tEAPF+YcYm6Jjst48nsIOcZ/zIlCx98tBZiax9JCdKuOY4EjompCe6LyxkAXlfaV5hd9bX9rboK4qajxwEQoQiTJ9gNUZ/Ng1FJMA46ZgN48PTSV4q9W58fJkCqpjAWpDU0QWli/qL3XktyTaQyZIO8InIxNupAorQawIv//lwRTNdCMz/gn0i9HWR3wUpfE+LAj6hQvUl/FLv463DD2IBwT9hHxkLb3Oy+sAiXXJkWl9kFyB3djeiuMXtxWQ9VTH8bENaAXx6fJJaVp9aVL/1t4PYxsqoTr9ZmhTqxxTXnfNbH1J+CH88BunKX7tkX7oM6zWLHT5RCeKtolOsy591LPKPOgpXnIin/zrm4NOU0uchA2/cqOSUmjvDviYrfYml02dYjEoUV8qudLBFmGjfF8B5L6iAvQe9+JwCi5eebMxZ4Bc92CN926M5iQRMQUTBmxAd+JRipYp05wcAIS6CoZqYqoGnJr/JI7CQa3D4xYydTQ9nJxJBqiryEessguAjMFKBoXOHhmCvgHgPZFDWM73P9M7k1Ge0Wn1AbO2m1t80bE9q3kvNptw4SI0z2CjTwAu0qxIh6H9DUFEzXD0DzpObc/TjwsYZxaYIiOZnXKr3d/K2hYWauMUznwhwZJwggqXjIvDsc2p2sn9K6MLKjTHgPR42otUZdrF2+qXxQ0BklLX5f1BLBwhVyuJIcBsAAGFdAABQSwECFAMUAAAAAACbo55cAAAAAAAAAAAAAAAACgAYAAAAAAAAAAAA/0EAAAAAZXh0ZW5zaW9uL3V4CwABBAAAAAAEAAAAAFVUBQAB9zzzaVBLAQIUAxQACAAIAI6cnlwh1aQieQAAAH8AAAAXABgAAAAAAAAAAAC2gUgAAABleHRlbnNpb24vYmFja2dyb3VuZC5qc3V4CwABBAAAAAAEAAAAAFVUBQABrDDzaVBLAQIUAxQACAAIAJCcnlw9v3vHoQAAAK0AAAAUABgAAAAAAAAAAAC2gSYBAABleHRlbnNpb24vY29udGVudC5qc3V4CwABBAAAAAAEAAAAAFVUBQABsDDzaVBLAQIUAxQACAAIANucnlxEIXmR7Q8AAG4RAAASABgAAAAAAAAAAAC2gSkCAABleHRlbnNpb24vaWNvbi5wbmd1eAsAAQQAAAAABAAAAABVVAUAAT4x82lQSwECFAMUAAgACABWo55cBeSriM8BAAAPAwAAFwAYAAAAAAAAAAAAtoF2EgAAZXh0ZW5zaW9uL21hbmlmZXN0Lmpzb251eAsAAQQAAAAABAAAAABVVAUAAXQ882lQSwECFAMUAAgACAAxop5cXXmfN7cQAABqOAAAFAAYAAAAAAAAAAAAtoGqFAAAZXh0ZW5zaW9uL3BvcHVwLmh0bWx1eAsAAQQAAAAABAAAAABVVAUAAU8682lQSwECFAMUAAgACABTo55cVcriSHAbAABhXQAAEgAYAAAAAAAAAAAAtoHDJQAAZXh0ZW5zaW9uL3BvcHVwLmpzdXgLAAEEAAAAAAQAAAAAVVQFAAFuPPNpUEsFBgAAAAAHAAcAbgIAAJNBAAAAAA==";
+    const byteChars = atob(zipBase64);
+    const byteNums = new Array(byteChars.length);
+    for (let i = 0; i < byteChars.length; i++) {
+      byteNums[i] = byteChars.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNums);
+    const blob = new Blob([byteArray], { type: 'application/zip' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'mitsumori-tenki-app.zip';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+</script>
 </body>
 </html>

@@ -129,9 +129,10 @@ img, svg { display: block; max-width: 100%; }
 }
 .nav {
   display: flex;
-  gap: 28px;
+  gap: 24px;
   font-size: 14px;
   color: var(--ink-soft);
+  white-space: nowrap;
 }
 .nav a:hover { color: var(--navy-900); }
 .header-cta {
@@ -1720,6 +1721,124 @@ section { padding: 100px 32px; }
   line-height: 1.85;
 }
 
+/* ============== STORY (note記事への導線) ============== */
+.story {
+  background: linear-gradient(180deg, #fbfcfe 0%, #ffffff 100%);
+  padding: 80px 32px;
+}
+.story .container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.story-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+.story-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--navy-800), var(--emerald));
+}
+.story-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--emerald-dark);
+  letter-spacing: 0.12em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.story-eyebrow svg {
+  width: 14px;
+  height: 14px;
+}
+.story-title {
+  font-family: 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 700;
+  color: var(--navy-900);
+  line-height: 1.45;
+  margin-bottom: 18px;
+  letter-spacing: -0.005em;
+}
+.story-body {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+}
+.story-quote {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--navy-700);
+  padding: 14px 20px;
+  background: var(--bg-soft);
+  border-left: 3px solid var(--emerald);
+  border-radius: 4px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.story-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: var(--navy-900);
+  color: white;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid var(--navy-900);
+}
+.story-cta:hover {
+  background: var(--emerald-dark);
+  border-color: var(--emerald-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,120,87,.3);
+}
+.story-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+.story-cta:hover svg {
+  transform: translateX(3px);
+}
+.story-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--ink-mute);
+}
+.story-meta-divider {
+  color: var(--line);
+}
+
+@media (max-width: 720px) {
+  .story { padding: 56px 20px; }
+  .story-card { padding: 32px 24px; border-radius: 18px; }
+  .story-title { font-size: 20px; line-height: 1.5; }
+  .story-body { font-size: 14px; }
+  .story-quote { font-size: 13px; padding: 12px 14px; }
+  .story-cta { font-size: 14px; padding: 12px 22px; width: 100%; justify-content: center; }
+  .story-meta { flex-wrap: wrap; }
+}
+
 /* ============== FINAL CTA ============== */
 .final-cta {
   background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
@@ -2540,6 +2659,7 @@ section { padding: 100px 32px; }
       <a href="#pricing">料金</a>
       <a href="#install">導入手順</a>
       <a href="#faq">FAQ</a>
+      <a href="#story">開発者の想い</a>
     </nav>
     <div class="header-cta">
       <a href="#pricing" class="btn btn-ghost">プランを見る</a>
@@ -3073,6 +3193,34 @@ section { padding: 100px 32px; }
         <summary class="faq-q">セキュリティはどのように担保されていますか？</summary>
         <p class="faq-a">PDFは処理時のみ一時的にAI解析サービスへ送信され、永続保存はされません。ライセンス情報はSupabase上で管理され、決済情報はStripeに安全に保管されます。</p>
       </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STORY (note記事への導線) ============== -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-card reveal">
+      <div class="story-eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        開発者の想い
+      </div>
+      <h2 class="story-title">なぜ「見積転記アシスタント」を作ったのか</h2>
+      <p class="story-body">スタッフが毎日のように見積書と格闘していた光景。1件30分が積み重なって生まれる、月10時間の負担。<br>そして「管理戸数が増えても、AIに任せれば作業量はほとんど増えない」と気づいた、あの瞬間。<br>このツールを開発するに至った経緯と、不動産管理業界に対する想いを、率直に綴りました。</p>
+      <div class="story-quote">
+        「30分が1分になる」と聞くと、たんに「29分が浮く」という話に聞こえるかもしれません。でも、実際に使ってみるとわかるのは、精神的な疲労が消えるということです。
+      </div>
+      <a href="https://note.com/ai_realestate_k/n/n0ef479d9f290" class="story-cta" target="_blank" rel="noopener noreferrer">
+        noteで全文を読む
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <div class="story-meta">
+        <span>📝 約3,000字</span>
+        <span class="story-meta-divider">|</span>
+        <span>読了目安：6分</span>
+        <span class="story-meta-divider">|</span>
+        <span>note公式</span>
+      </div>
     </div>
   </div>
 </section>
